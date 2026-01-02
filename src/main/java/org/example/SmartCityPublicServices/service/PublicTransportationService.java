@@ -21,6 +21,7 @@ public class PublicTransportationService implements PayFare {
                 citizens.add(c);
             }
         }
+        Pay(c.getId(),id);
     }
 
     public PublicTransportation getPublicTransportation(int id) {

@@ -24,9 +24,7 @@ public class Main {
         pts.addPublicTransportation(1, "Bus");
         pts.addPublicTransportation(2, "Jeep");
         pts.ridePublicTransportation(c.getCitizen(1), 1);
-        pts.Pay(1, 1);
         pts.ridePublicTransportation(c.getCitizen(1), 2);
-        pts.Pay(1, 2);
         System.out.println();
         pts.getPassengers();
 
