@@ -15,8 +15,12 @@ public class PublicTransportationService implements PayFare {
         pt.add(new PublicTransportation(id, type));
     }
 
-    public void ridePublicTransportation(Citizen c, PublicTransportation pt) {
-        citizens.add(c);
+    public void ridePublicTransportation(Citizen c, int id) {
+        for (PublicTransportation pts : pt) {
+            if (pts.getId() == id) {
+                citizens.add(c);
+            }
+        }
     }
 
     public PublicTransportation getPublicTransportation(int id) {
@@ -29,10 +33,8 @@ public class PublicTransportationService implements PayFare {
     }
 
     public void getPassengers() {
-        for (PublicTransportation ptf : pt) {
-            for (Citizen c : citizens) {
-                System.out.println(c);
-            }
+        for (Citizen c : citizens) {
+            System.out.println(c);
         }
     }
 
@@ -45,17 +47,21 @@ public class PublicTransportationService implements PayFare {
     }
 
     @Override
-    public void Pay(int id, String type) {
+    public void Pay(int id, int tid) {
         for (PublicTransportation ptf : pt) {
-            for (Citizen c : citizens) {
-                if (c.getId() == id) {
-                    double fare = switch (type) {
-                        case "Bus" -> 15;
-                        case "Jeep" -> 10;
-                        default -> 0;
-                    };
-                    c.deductBalance(fare);
-                    System.out.println("The passenger has reached his destination");
+            if (ptf.getId() == tid) {
+                String type = ptf.getType();
+                for (Citizen c : citizens) {
+                    if (c.getId() == id) {
+                        double fare = switch (type) {
+                            case "Bus" -> 15;
+                            case "Jeep" -> 10;
+                            default -> 0;
+                        };
+                        c.deductBalance(fare);
+                        System.out.println("The passenger has reached his destination");
+                        break;
+                    }
                 }
             }
         }
