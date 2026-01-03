@@ -18,10 +18,11 @@ public class WaterSupplyService implements OrderWater, Service {
         waterSupply = new ArrayList<>();
     }
 
-    public void addWaterSupply(int id, String name) {
+    public void addWaterSupply(int id, String name, List<Citizen> citizens) {
         waterSupply.add(new WaterSupply(id, name));
-        subscribers.put(name, new ArrayList<>());
+        subscribers.put(name, citizens);
     }
+
 
     public WaterSupply getWaterSupply(String name) {
         for (WaterSupply ws : waterSupply) {
@@ -32,15 +33,15 @@ public class WaterSupplyService implements OrderWater, Service {
         return null;
     }
 
-    public void subscribeCitizenToWaterSupply(Citizen c, String name) {
-        WaterSupply ws = getWaterSupply(name);
-
-        if (ws == null) {
-            System.out.println(ws.getName() + " was not found");
-        }
-
-        subscribers.get(name).add(c);
-    }
+//    public void subscribeCitizenToWaterSupply(Citizen c, String name) {
+//        WaterSupply ws = getWaterSupply(name);
+//
+//        if (ws == null) {
+//            System.out.println(ws.getName() + " was not found");
+//        }
+//
+//        subscribers.get(name).add(c);
+//    }
 
     public void getSubscribers(String name) {
         for (Map.Entry<String, List<Citizen>> entry : subscribers.entrySet()) {
@@ -65,7 +66,7 @@ public class WaterSupplyService implements OrderWater, Service {
 
     @Override
     public void orderWater(int id) {
-        orders.add(getSubscriber(1));
+        orders.add(getSubscriber(id));
 
     }
 
