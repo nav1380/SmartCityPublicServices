@@ -14,5 +14,6 @@ public class Main {
         es.addEmergencyService("Hospital", c.getCitizens());
         es.getCitizens("Hospital");
         es.callForEmergency(1, "Hospital");
+
     }
 }
