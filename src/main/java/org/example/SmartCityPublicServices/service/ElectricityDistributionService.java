@@ -6,7 +6,7 @@ import org.example.SmartCityPublicServices.model.ElectricityDistribution;
 import java.util.ArrayList;
 import java.util.List;
 
-public class ElectricityDistributionService {
+public class ElectricityDistributionService implements BillCitizens {
 
     private List<ElectricityDistribution> ETS = new ArrayList<>();
     private List<Citizen> citizens = new ArrayList<>();
@@ -36,23 +36,7 @@ public class ElectricityDistributionService {
         }
     }
 
-    public void billCitizens() {
-        int paid = 0;
-        int notpaid = 0;
-        clearPaidList();
-        for (Citizen c : citizens) {
-            if (c.getBalance() >= 1300) {
-                c.deductBalance(1300);
-                paidCitizens.add(c);
-                paid++;
-            } else {
-                System.out.println(c.getName() + " did not have sufficient balance");
-                notpaid++;
-            }
-        }
-        System.out.println("Citizens that have paid electricity: " + paid);
-        System.out.println("Citizens that have not paid electricity: " + notpaid);
-    }
+
 
     public void clearPaidList() {
         for (Citizen c : citizens) {
@@ -60,4 +44,26 @@ public class ElectricityDistributionService {
         }
     }
 
+    @Override
+    public void billCitizens() {
+        int paid = 0;
+        int notpaid = 0;
+        paidCitizens.clear();
+        for (Citizen c : citizens) {
+            if (!paidCitizens.contains(c)) {
+                if (c.getBalance() >= 1300) {
+                    paidCitizens.add(c);
+                    c.deductBalance(1300);
+                    paid++;
+                } else {
+                    System.out.println(c.getName() + " did not have sufficient balance");
+                    notpaid++;
+                }
+            } else {
+                System.out.println(c.getName() + " has already paid his dues");
+            }
+        }
+        System.out.println("Citizens that have paid electricity: " + paid);
+        System.out.println("Citizens that have not paid electricity: " + notpaid);
+    }
 }

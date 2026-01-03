@@ -1,5 +1,8 @@
 package org.example.SmartCityPublicServices.service;
 
+import org.example.SmartCityPublicServices.model.Citizen;
+import org.example.SmartCityPublicServices.model.PublicTransportation;
+
 public interface PayFare {
-    void Pay(int id, int tid);
+    void Pay(Citizen c, PublicTransportation pt);
 }
