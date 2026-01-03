@@ -36,12 +36,10 @@ public class Citizen {
 
     @Override
     public String toString() {
-        return "Citizen{" +
+        return "Citizen: " +
                 "id=" + id +
-                ", name='" + name + '\'' +
-                ", age=" + age +
-                ", balance=" + balance +
-                '}';
+                ", name=" + name  +
+                ", age=" + age + "]";
     }
 
     public void setName(String name) {

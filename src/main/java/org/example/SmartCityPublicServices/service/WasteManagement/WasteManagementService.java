@@ -1,7 +1,8 @@
-package org.example.SmartCityPublicServices.service;
+package org.example.SmartCityPublicServices.service.WasteManagement;
 
 import org.example.SmartCityPublicServices.model.Citizen;
 import org.example.SmartCityPublicServices.model.WasteManagement;
+import org.example.SmartCityPublicServices.service.Service;
 
 import java.time.DayOfWeek;
 import java.time.LocalDate;
@@ -12,6 +13,7 @@ public class WasteManagementService implements Service {
 
     private List<Citizen> citizens = new ArrayList<>();
     private List<WasteManagement> wasteManagement = new ArrayList<>();
+
 
     public void addWasteManagement(int id) {
         wasteManagement.add(new WasteManagement(id));

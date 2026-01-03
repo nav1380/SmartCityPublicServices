@@ -1,4 +1,4 @@
-package org.example.SmartCityPublicServices.service;
+package org.example.SmartCityPublicServices.service.Citizen;
 
 import org.example.SmartCityPublicServices.model.Citizen;
 
@@ -28,4 +28,7 @@ public class CitizenService{
         }
     }
 
+    public List<Citizen> getCitizens() {
+        return citizens;
+    }
 }

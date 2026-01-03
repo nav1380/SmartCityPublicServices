@@ -15,11 +15,4 @@ public class ElectricityDistribution {
     public void setCompany(String company) {
         this.company = company;
     }
-
-    @Override
-    public String toString() {
-        return "ElectricityDistribution{" +
-                "company='" + company + '\'' +
-                '}';
-    }
 }

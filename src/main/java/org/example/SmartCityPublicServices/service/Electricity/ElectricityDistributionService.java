@@ -1,4 +1,4 @@
-package org.example.SmartCityPublicServices.service;
+package org.example.SmartCityPublicServices.service.Electricity;
 
 import org.example.SmartCityPublicServices.model.Citizen;
 import org.example.SmartCityPublicServices.model.ElectricityDistribution;
