@@ -1,6 +1,7 @@
 package org.example.SmartCityPublicServices;
 
 import org.example.SmartCityPublicServices.service.Citizen.CitizenService;
+import org.example.SmartCityPublicServices.service.Electricity.ElectricityDistributionService;
 import org.example.SmartCityPublicServices.service.Emergency.EmergencyServices;
 import org.example.SmartCityPublicServices.service.Water.WaterSupplyService;
 
@@ -11,15 +12,15 @@ public class Main {
         c.addCitizen(1, "Godwynne", 23, 10000);
         c.addCitizen(2, "Joshua", 23, 10000);
 
-        WaterSupplyService ws = new WaterSupplyService();
-        ws.addWaterSupply(1, "Hydro Care", c.getCitizens());
-        ws.orderWater(1);
-        ws.orderWater(1);
-        ws.orderWater(2);
-        ws.orderWater(2);
-        ws.execute();
+        ElectricityDistributionService eds = new ElectricityDistributionService();
+        eds.addElectricityCompany("Batelec");
+        eds.addElectricityCompany("Meralco");
+        eds.subscribeCustomerToElectricity(c.getCitizen(1), "Batelec");
+        eds.subscribeCustomerToElectricity(c.getCitizen(2), "Batelec");
+        eds.payElectricity(1);
+        eds.payElectricity(2);
 
-        c.getAllCitizens();
-
+        System.out.println("Payed their dues: ");
+        eds.outputPaidCitizens();
     }
 }

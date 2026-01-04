@@ -1,5 +1,5 @@
 package org.example.SmartCityPublicServices.service.Electricity;
 
 public interface BillCitizens {
-    void billCitizens();
+    void payElectricity(int id);
 }

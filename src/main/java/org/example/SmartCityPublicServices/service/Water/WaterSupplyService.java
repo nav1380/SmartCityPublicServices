@@ -2,6 +2,7 @@ package org.example.SmartCityPublicServices.service.Water;
 
 import org.example.SmartCityPublicServices.model.Citizen;
 import org.example.SmartCityPublicServices.model.WaterSupply;
+import org.example.SmartCityPublicServices.service.Citizen.CitizenService;
 import org.example.SmartCityPublicServices.service.Service;
 
 import java.util.*;
@@ -9,39 +10,20 @@ import java.util.*;
 public class WaterSupplyService implements OrderWater, Service {
 
     private Map<String, List<Citizen>> subscribers;
-    private List<WaterSupply> waterSupply;
     private List<Citizen> orders;
 
     public WaterSupplyService() {
         orders = new ArrayList<>();
         subscribers = new HashMap<>();
-        waterSupply = new ArrayList<>();
     }
 
     public void addWaterSupply(int id, String name, List<Citizen> citizens) {
-        waterSupply.add(new WaterSupply(id, name));
         subscribers.put(name, citizens);
     }
 
-
-    public WaterSupply getWaterSupply(String name) {
-        for (WaterSupply ws : waterSupply) {
-            if (ws.getName().equals(name)) {
-                return ws;
-            }
-        }
-        return null;
+    public void addWaterSupply(int id, String name) {
+        subscribers.put(name, CitizenService.getCitizens());
     }
-
-//    public void subscribeCitizenToWaterSupply(Citizen c, String name) {
-//        WaterSupply ws = getWaterSupply(name);
-//
-//        if (ws == null) {
-//            System.out.println(ws.getName() + " was not found");
-//        }
-//
-//        subscribers.get(name).add(c);
-//    }
 
     public void getSubscribers(String name) {
         for (Map.Entry<String, List<Citizen>> entry : subscribers.entrySet()) {

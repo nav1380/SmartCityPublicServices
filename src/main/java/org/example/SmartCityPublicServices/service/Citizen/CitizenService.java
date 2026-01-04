@@ -7,7 +7,7 @@ import java.util.List;
 
 public class CitizenService{
 
-    private List<Citizen> citizens = new ArrayList<>();
+    private static List<Citizen> citizens = new ArrayList<>();
 
     public void addCitizen(int id, String name, int age, double balance) {
         citizens.add(new Citizen(id, name, age, balance));
@@ -28,7 +28,7 @@ public class CitizenService{
         }
     }
 
-    public List<Citizen> getCitizens() {
+    public static List<Citizen> getCitizens() {
         return citizens;
     }
 }
