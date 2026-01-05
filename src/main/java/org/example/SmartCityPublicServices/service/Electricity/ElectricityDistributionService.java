@@ -21,8 +21,29 @@ public class ElectricityDistributionService implements BillCitizens {
         paidCitizens = new ArrayList<>();
     }
 
-    public void addElectricityCompany(String company) {
-        electricity.put(company, new ArrayList<>());
+    public void addElectricityCompany(String companyp) throws ExistingElectricityCompanyException {
+        if (electricity.containsKey(companyp)) {
+            throw new ExistingElectricityCompanyException(companyp + " is an existing company");
+        }
+
+        electricity.put(companyp, new ArrayList<>());
+    }
+
+    public void getCompanies() {
+        List<String> companies = new ArrayList<>();
+
+        for (Map.Entry<String, List<Citizen>> entry : electricity.entrySet()) {
+            System.out.println(entry.getKey());
+        }
+    }
+
+    public String getCompany(String company) {
+        for (Map.Entry<String, List<Citizen>> entry : electricity.entrySet()) {
+            if (entry.getKey().equals(company)) {
+                return entry.getKey();
+            }
+        }
+        return null;
     }
 
     public void getElectricityCompanies() {

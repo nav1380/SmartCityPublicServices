@@ -9,7 +9,12 @@ public class CitizenService{
 
     private static List<Citizen> citizens = new ArrayList<>();
 
-    public void addCitizen(int id, String name, int age, double balance) {
+    public void addCitizen(int id, String name, int age, double balance) throws ExistingCitizenException {
+        Citizen c = getCitizen(id);
+        if (citizens.contains(c)) {
+            throw new ExistingCitizenException("Already existing");
+        }
+
         citizens.add(new Citizen(id, name, age, balance));
     }
 
